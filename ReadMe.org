@@ -1,0 +1,31 @@
+* 安装步骤
+
+#+BEGIN_SRC bash
+# 把 ytstudio_base.box 放到 vagrant 根目录
+$ ls -lh ytstudio_base.box
+
+$ vagrant box add --name ytstudio_base ytstudio_base.box
+
+$ vagrant box list
+
+$ vagrant up
+
+$ vagrant ssh
+#+END_SRC
+
+* YTstudio 相关 service 起停脚本
+
+#+BEGIN_SRC bash
+service nginx start
+
+service ytstudiod start 
+#+END_SRC
+
+设置开机自启动
+
+#+BEGIN_SRC bash
+systemctl enable nginx
+
+cd /etc/rc3.d
+ln -s ../init.d/ytstudiod S99ytstudiod
+#+END_SRC
